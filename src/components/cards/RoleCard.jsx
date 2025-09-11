@@ -61,12 +61,12 @@ export default function RoleCard({
               }}
             >
               {role && (
-                <div className="absolute top-[460px] left-1/2 -translate-x-1/2 text-center [-webkit-text-stroke:1px_#000000] [font-family:'Gugi-Regular',Helvetica] font-normal text-white text-2xl w-full">
+                <div className="absolute top-[460px] left-1/2 -translate-x-1/2 text-center font-gugi font-normal text-white text-2xl w-full">
                   {role}
                 </div>
               )}
               {quote && (
-                <div className="absolute w-[348px] top-[497px] left-1/2 -translate-x-1/2 text-center [-webkit-text-stroke:1px_#000000] [font-family:'Gugi-Regular',Helvetica] font-normal text-white text-2xl">
+                <div className="absolute w-[348px] top-[497px] left-1/2 -translate-x-1/2 text-center font-gugi font-normal text-white text-2xl">
                   “{quote}”
                 </div>
               )}

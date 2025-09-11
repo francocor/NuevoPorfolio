@@ -10,7 +10,7 @@ export default function RoleCards() {
   const [openUx, setOpenUx] = useState(false);
 
   return (
-  <section className="py-12 font-gugi">
+  <section className="py-12 font-gugi text-white">
   <div className="flex flex-wrap justify-center gap-12 items-center">
         <RoleCard
           imageSrc={devImg}

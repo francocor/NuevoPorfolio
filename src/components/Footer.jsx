@@ -13,7 +13,7 @@ export default function Footer() {
         <a href="https://github.com/francocor" target="_blank" className="w-16 h-16 md:w-24 md:h-24 grid place-items-center rounded-full hover:bg-black/10">
           <Github className="w-8 h-8 md:w-12 md:h-12 text-black" />
         </a>
-        <a href="https://www.linkedin.com/" target="_blank" className="w-16 h-16 md:w-24 md:h-24 grid place-items-center rounded-full hover:bg-black/10">
+        <a href="https://www.linkedin.com/in/franco-cornejo-3b3aaa209/" target="_blank" className="w-16 h-16 md:w-24 md:h-24 grid place-items-center rounded-full hover:bg-black/10">
           <Linkedin className="w-8 h-8 md:w-12 md:h-12 text-black" />
         </a>
       </div>
