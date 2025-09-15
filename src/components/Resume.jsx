@@ -3,7 +3,7 @@ import { FiDownload } from "react-icons/fi";
 
 function GlowButtons({ href, label, subtitle, downloadName, color }) {
   return (
-    <div className="relative w-full max-w-[520px] mx-auto group">
+    <div className="relative w-full max-w-[520px] mx-auto group font-gugi">
       {/* Glow difuminado */}
       <span
         aria-hidden
@@ -56,13 +56,8 @@ export default function Resume() {
     <section id="resume" className="py-16 font-gugi">
       {/* Título */}
       <div className="text-center mb-10">
-        <h2 className="inline">
-          <span className="text-6xl md:text-8xl text-[#007acc] [font-family:'Gugi-Regular',Helvetica] [text-shadow:0px_3px_0px_#00000066]">
-            Mi
-          </span>
-          <span className="text-6xl md:text-8xl text-[#a259ff] [font-family:'Gugi-Regular',Helvetica] [text-shadow:0px_3px_0px_#00000066] ml-3">
-            Resumen
-          </span>
+        <h2 className="inline text-6xl md:text-8xl text-[#a259ff] [text-shadow:0px_3px_0px_#00000066] ml-3">
+          Resumen
         </h2>
       </div>
 
@@ -79,7 +74,7 @@ export default function Resume() {
             />
             <iframe
               title="CV Español"
-              src="/CV_FrancoCornejo_ES.pdf#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width"
+              src="/CV_FrancoCornejo_ES.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit"
               className="relative w-full h-[70vh] md:h-[78vh] lg:h-[780px] rounded-xl z-[1]"
             />
           </div>
@@ -102,7 +97,7 @@ export default function Resume() {
             />
             <iframe
               title="CV English"
-              src="/CV_FrancoCornejo_EN.pdf#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width"
+              src="/CV_FrancoCornejo_EN.pdf#toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit"
               className="relative w-full h-[70vh] md:h-[78vh] lg:h-[780px] rounded-xl z-[1]"
             />
           </div>
@@ -118,4 +113,5 @@ export default function Resume() {
     </section>
   );
 }
+
 

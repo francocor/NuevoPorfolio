@@ -1,5 +1,5 @@
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
-import { SiTailwindcss, SiJavascript, SiMysql, SiPostgresql, SiExpress, SiPython, SiDotnet } from 'react-icons/si';
+import { SiTailwindcss, SiJavascript, SiMysql, SiPostgresql, SiExpress, SiPython, SiDotnet, SiMongodb } from 'react-icons/si';
 
 export const techIcons = [
   { name: 'HTML', icon: FaHtml5 },
@@ -11,6 +11,7 @@ export const techIcons = [
   { name: 'SQL Server', icon: FaDatabase },
   { name: 'MySQL', icon: SiMysql },
   { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'MongoDB', icon: SiMongodb },
   { name: 'Express', icon: SiExpress },
   { name: 'Python', icon: SiPython },
   { name: 'C#', icon: SiDotnet },
