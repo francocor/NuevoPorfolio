@@ -1,7 +1,7 @@
-// src/lib/i18n.jsx
+
 import React, { createContext, useContext, useMemo, useState, useEffect } from "react";
 
-/* === Diccionarios === */
+
 const MESSAGES = {
   es: {
     nav: { home: "Inicio", projects: "Proyectos", resume: "Resumen", contact: "Contacto" },

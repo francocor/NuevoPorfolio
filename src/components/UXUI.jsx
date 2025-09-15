@@ -10,17 +10,17 @@ import { FaFigma } from "react-icons/fa";
 
 export default function UXUI() {
   const bubbles = [
-    { img: LoginEnBaja,  color: "rgba(255,115,80,1)"  }, // naranja sup-izq
-    { img: TurnosEnBaja, color: "rgba(34,197,94,1)"   }, // verde sup-der
-    { img: LoginEnAlta,  color: "rgba(59,130,246,1)"  }, // celeste inf-izq
-    { img: TurnosEnAlta, color: "rgba(162,89,255,1)"  }, // violeta inf-der
+    { img: LoginEnBaja,  color: "rgba(255,115,80,1)"  }, 
+    { img: TurnosEnBaja, color: "rgba(34,197,94,1)"   }, 
+    { img: LoginEnAlta,  color: "rgba(59,130,246,1)"  }, 
+    { img: TurnosEnAlta, color: "rgba(162,89,255,1)"  }, 
   ];
 
   const bubbleSize = "w-full max-w-[320px] sm:max-w-[360px] aspect-square";
 
   return (
     <section className="py-16 font-gugi overflow-x-hidden">
-      {/* Título */}
+      
       <div className="flex justify-center mb-12">
         <img
           src={uxuiTitle}
@@ -31,7 +31,7 @@ export default function UXUI() {
 
       <div className="px-6 md:px-[102px]">
         <div className="relative w-full max-w-[1161px] mx-auto">
-          {/* Glow exterior del contenedor */}
+          
           <span
             aria-hidden
             className="absolute -inset-6 md:-inset-7 rounded-[42px] blur-[60px] pointer-events-none"
@@ -44,14 +44,14 @@ export default function UXUI() {
           />
 
           <Card className="relative rounded-[35px] bg-[#0f0f12] overflow-hidden">
-            {/* Borde neón del contenedor */}
+            
             <span
               aria-hidden
               className="absolute inset-0 rounded-[35px] pointer-events-none z-10"
               style={{ boxShadow: "0 0 0 2px #a259ff" }}
             />
 
-            {/* Botón Figma */}
+            
             <a
               href="https://www.figma.com/design/ShsV06LZ1EOLp236nMlAg6/Porfolio?node-id=0-1&t=1t5VGvYOpBuIfp17-1"
               target="_blank"
@@ -67,7 +67,7 @@ export default function UXUI() {
                 Harmonia
               </h4>
 
-              {/* Grid de burbujas */}
+              
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 md:gap-16 place-items-center">
                 {bubbles.map((b, idx) => (
                   <div
@@ -77,7 +77,7 @@ export default function UXUI() {
                     <BubbleImage
                       src={b.img}
                       size="w-full"
-                      neonColor={b.color}   // color del borde neón
+                      neonColor={b.color}   
                       neonWidth={3}
                       neonBlur={46}
                       neonOpacity={0.9}

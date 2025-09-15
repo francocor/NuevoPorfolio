@@ -3,9 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Opcional: tu bloque de variables/animaciones acá... */
 
-html { scroll-behavior: smooth; } /* Smooth scroll global */
+
+html { scroll-behavior: smooth; } 
 
 @layer base {
   :root {

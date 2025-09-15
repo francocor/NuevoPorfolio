@@ -4,13 +4,13 @@ import { FiDownload } from "react-icons/fi";
 function GlowButtons({ href, label, subtitle, downloadName, color }) {
   return (
     <div className="relative w-full max-w-[520px] mx-auto group font-gugi">
-      {/* Glow difuminado */}
+      
       <span
         aria-hidden
         className="pointer-events-none absolute -inset-4 rounded-2xl opacity-80 blur-[44px] transition-opacity duration-200 group-hover:opacity-100"
         style={{ background: `radial-gradient(closest-side, ${color}, transparent 65%)` }}
       />
-      {/* Contenido */}
+      
       <div
         className={[
           "relative z-[1] flex items-center justify-between gap-3",
@@ -27,7 +27,7 @@ function GlowButtons({ href, label, subtitle, downloadName, color }) {
           <span className="text-xs text-white/70">{subtitle}</span>
         </div>
         <div className="flex items-center gap-2">
-          {/* Ver */}
+          
           <a
             href={href}
             target="_blank"
@@ -36,7 +36,7 @@ function GlowButtons({ href, label, subtitle, downloadName, color }) {
           >
             Ver
           </a>
-          {/* Descargar */}
+          
           <a
             href={href}
             download={downloadName}
@@ -54,19 +54,19 @@ function GlowButtons({ href, label, subtitle, downloadName, color }) {
 export default function Resume() {
   return (
     <section id="resume" className="py-16 font-gugi">
-      {/* Título */}
+      
       <div className="text-center mb-10">
         <h2 className="inline text-6xl md:text-8xl text-[#a259ff] [text-shadow:0px_3px_0px_#00000066] ml-3">
           Resumen
         </h2>
       </div>
 
-      {/* CVs en grid responsivo */}
+      
       <div className="px-6 md:px-[138px] grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-        {/* CV Español */}
+        
         <div className="flex flex-col gap-6">
           <div className="relative w-full rounded-xl overflow-hidden">
-            {/* Glow neón alrededor del iframe */}
+            
             <span
               aria-hidden
               className="absolute -inset-3 rounded-xl blur-[40px] opacity-80 pointer-events-none"
@@ -83,11 +83,11 @@ export default function Resume() {
             label="CV Español"
             subtitle="Versión en español (PDF)"
             downloadName="CV_FrancoCornejo_ES.pdf"
-            color="rgba(34,197,94,1)" // verde
+            color="rgba(34,197,94,1)" 
           />
         </div>
 
-        {/* CV Inglés */}
+        
         <div className="flex flex-col gap-6">
           <div className="relative w-full rounded-xl overflow-hidden">
             <span
@@ -106,7 +106,7 @@ export default function Resume() {
             label="CV English"
             subtitle="English version (PDF)"
             downloadName="CV_FrancoCornejo_EN.pdf"
-            color="rgba(59,130,246,1)" // celeste
+            color="rgba(59,130,246,1)" 
           />
         </div>
       </div>

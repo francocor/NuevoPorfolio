@@ -13,7 +13,7 @@ export default function BubbleImage({
   gravity = 760,
   drag = 0.18,
 
-  // Borde/glow neón de la burbuja
+  
   neonColor = "rgba(162,89,255,1)",
   neonWidth = 3,
   neonBlur = 42,
@@ -34,7 +34,7 @@ export default function BubbleImage({
   const [phase, setPhase] = useState("idle");
   const [respawnShift, setRespawnShift] = useState({ x: 0, y: 0 });
 
-  // -------- partículas ----------
+  
   const [parts, setParts] = useState([]);
   const rafRef = useRef(null);
   const lastRef = useRef(0);
@@ -112,7 +112,7 @@ export default function BubbleImage({
 
   return (
     <div className={`relative ${size} aspect-square mx-auto select-none`}>
-      {/* sombra en el piso */}
+      
       <div
         aria-hidden
         className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-6 rounded-[50%] blur-2xl"
@@ -123,7 +123,7 @@ export default function BubbleImage({
         }}
       />
 
-      {/* WRAP que recibe las transforms (glow + burbuja adentro) */}
+      
       <div
         className={[
           "relative w-full h-full rounded-full",
@@ -136,7 +136,7 @@ export default function BubbleImage({
           willChange: "transform",
         }}
       >
-        {/* NEÓN (fuera del recorte) */}
+        
         <span
           aria-hidden
           className="absolute inset-0 rounded-full pointer-events-none z-[1]"
@@ -152,7 +152,7 @@ export default function BubbleImage({
           }}
         />
 
-        {/* BOTÓN-BURBUJA (recorte) */}
+        
         <button
           type="button"
           onClick={handleClick}
@@ -165,7 +165,7 @@ export default function BubbleImage({
             cursor: phase === "idle" ? "pointer" : "default",
           }}
         >
-          {/* imagen */}
+         
           {currentSrc && (
             <img
               src={currentSrc}
@@ -176,7 +176,7 @@ export default function BubbleImage({
             />
           )}
 
-          {/* película/transparencia */}
+          
           <div
             aria-hidden
             className="absolute inset-0 rounded-full mix-blend-screen z-[4]"
@@ -188,7 +188,7 @@ export default function BubbleImage({
             }}
           />
 
-          {/* highlights + sombra interior */}
+          
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 z-[4]"
@@ -199,7 +199,7 @@ export default function BubbleImage({
             }}
           />
 
-          {/* shockwave */}
+          
           {phase === "popping" && (
             <span
               aria-hidden
@@ -208,7 +208,7 @@ export default function BubbleImage({
             />
           )}
 
-          {/* partículas */}
+          
           {parts.length > 0 && (
             <div className="pointer-events-none absolute inset-0 z-[5]">
               {parts.map(p => (
@@ -231,7 +231,7 @@ export default function BubbleImage({
         </button>
       </div>
 
-      {/* animaciones */}
+      
       <style>{`
         @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         .animate-float { animation: float ${FLOAT_DUR}ms ease-in-out infinite; }

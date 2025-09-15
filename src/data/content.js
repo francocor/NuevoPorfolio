@@ -8,7 +8,7 @@ export const uxuiProjects = [
   { image: "image-29.png", color: "bg-gradient-to-br from-blue-400 to-blue-600" },
   { image: "image-29.png", color: "bg-gradient-to-br from-blue-400 to-blue-600" }
 ];
-// src/data/content.js
+
 export const navigationItems = [
   { label: "Home", target: "home" },
   { label: "About", target: "about" },
@@ -17,4 +17,3 @@ export const navigationItems = [
   { label: "Contact", target: "contact" },
 ];
 
-// Los proyectos se deben definir en Projects.jsx con las imágenes importadas allí.

@@ -17,7 +17,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Botón global de idioma */}
+      
       <div className="mt-8 flex items-center">
         <button
           type="button"

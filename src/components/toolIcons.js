@@ -6,5 +6,5 @@ export const toolIcons = [
   { name: "Visual Studio", icon: FaLaptopCode },
   { name: "Git", icon: SiGit },
   { name: "Figma", icon: SiFigma },
-  { name: "Adobe", icon: SiAdobe } // agregado correctamente
+  { name: "Adobe", icon: SiAdobe } 
 ];

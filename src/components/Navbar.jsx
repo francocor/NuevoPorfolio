@@ -9,12 +9,12 @@ export default function Navbar() {
   return (
     <header className="w-full h-[90px] bg-gradient-to-b from-gray-600 to-black border-b border-[#007acc] z-50 font-gugi">
       <div className="w-full h-full flex items-center justify-between px-6">
-        {/* Logo */}
+        
         <div className="text-white text-4xl [-webkit-text-stroke:1px_#007acc]">
           &lt;FC/&gt;
         </div>
 
-        {/* Desktop nav */}
+        
         <nav className="hidden md:flex gap-3 items-center">
           {navigationItems.map((item) => (
             <a key={item.target} href={`#${item.target}`}>
@@ -27,7 +27,7 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* GitHub */}
+          
           <a
             href="https://github.com/francocor"
             target="_blank"
@@ -44,7 +44,7 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile hamburger */}
+        
         <div className="md:hidden flex items-center">
           <Button
             variant="outline"
