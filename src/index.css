@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 240 10% 97%;
+    --card: 240 10% 6%;
+    --card-foreground: 240 10% 97%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 240 10% 97%;
+    --primary: 248 89% 69%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 8% 10%;
+    --secondary-foreground: 240 10% 97%;
+    --muted: 240 8% 12%;
+    --muted-foreground: 240 5% 55%;
+    --accent: 248 89% 69%;
+    --accent-foreground: 240 10% 97%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 8% 14%;
+    --input: 240 8% 14%;
+    --ring: 248 89% 69%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: #08080E;
+    color: #F0F0FA;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #6C63FF 0%, #00D4FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-glass {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: #6C63FF;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #08080E;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 99, 255, 0.6);
+}
+
+::selection {
+  background: rgba(108, 99, 255, 0.28);
+  color: #F0F0FA;
+}
