@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Experience from "@/components/Experience";
 import TechGrid from "@/components/TechGrid";
 import Projects from "@/components/Projects";
 import UXUI from "@/components/UXUI";
@@ -14,6 +15,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <TechGrid />
         <Projects />
         <UXUI />

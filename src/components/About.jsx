@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
 const fadeUp = {
@@ -16,10 +16,36 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-function StatCard({ value, label }) {
+function StatCard({ value, label, play }) {
+  const prefersReduced = useReducedMotion();
+  const target = parseInt(value, 10);
+  const suffix = value.replace(/[0-9]/g, "");
+  const [count, setCount] = useState(prefersReduced ? target : 0);
+
+  useEffect(() => {
+    if (isNaN(target)) return;
+    if (!play || prefersReduced) {
+      setCount(target);
+      return;
+    }
+    let raf;
+    const duration = 1100;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      setCount(Math.round(eased * target));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [play, target, prefersReduced]);
+
+  const display = isNaN(target) ? value : `${count}${suffix}`;
+
   return (
     <div className="flex flex-col items-center p-4 rounded-xl border border-white/[0.08] bg-white/[0.02]">
-      <span className="font-sora font-bold text-3xl gradient-text">{value}</span>
+      <span className="font-sora font-bold text-3xl gradient-text tabular-nums">{display}</span>
       <span className="text-[#8888A8] text-xs font-sans text-center mt-1 leading-snug">
         {label}
       </span>
@@ -92,11 +118,12 @@ export default function About() {
               </div>
               <pre className="text-[#8888A8] text-xs md:text-sm leading-relaxed overflow-x-auto font-mono">
 {`const franco = {
-  role: "Frontend Developer",
-  focus: ["React", "UX/UI", "Clean Code"],
+  role: "Full Stack Developer",
+  hats: ["React Frontend", "Manual QA", "AI Platform Eng."],
+  stack: ["React", "Node", "Supabase", "SQL"],
   location: "Tucumán, Argentina",
   available: true,
-  superpower: "interfaces that feel right"
+  superpower: "build it, test it, ship it"
 };`}
               </pre>
             </motion.div>
@@ -104,14 +131,17 @@ export default function About() {
             {/* Stats */}
             <motion.div variants={fadeUp} className="grid grid-cols-3 gap-3">
               <StatCard
+                play={inView}
                 value={t("about.stat1_value")}
                 label={t("about.stat1_label")}
               />
               <StatCard
+                play={inView}
                 value={t("about.stat2_value")}
                 label={t("about.stat2_label")}
               />
               <StatCard
+                play={inView}
                 value={t("about.stat3_value")}
                 label={t("about.stat3_label")}
               />
