@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, ArrowDown } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import RotatingRole from "@/components/RotatingRole";
 
 const containerVariants = {
   hidden: {},
@@ -100,12 +101,12 @@ export default function Hero() {
           </h2>
         </motion.div>
 
-        {/* Subtitle */}
+        {/* Subtitle — rotating role typewriter */}
         <motion.p
           variants={itemVariants}
-          className="text-[#8888A8] font-mono text-sm md:text-base mb-4"
+          className="text-[#8888A8] font-mono text-sm md:text-base mb-4 min-h-[1.5em] flex items-center justify-center"
         >
-          {t("hero.subtitle")}
+          <RotatingRole text={t("hero.subtitle")} />
         </motion.p>
 
         {/* Description */}
