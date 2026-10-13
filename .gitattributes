@@ -1,0 +1,10 @@
+# Treat binary assets as binary to prevent any line-ending conversion
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
