@@ -79,7 +79,7 @@ export default function About() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-sora font-bold text-4xl md:text-5xl text-[#F0F0FA] leading-tight mb-8"
+              className="font-sora font-bold text-fluid-section text-[#F0F0FA] leading-tight mb-8"
             >
               {t("about.title1")}
               <br />

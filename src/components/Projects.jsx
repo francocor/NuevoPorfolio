@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Github } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { useSpotlight } from "@/hooks/useSpotlight";
 
 import Proyecto1MedPc from "@/assets/Proyecto1AppMedi.png";
 import Proyecto1MedCel from "@/assets/Proyecto1AppMediCel.png";
@@ -51,18 +52,28 @@ const FigmaIcon = () => (
 );
 
 function ProjectCard({ project, index }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inViewRef = useRef(null);
+  const inView = useInView(inViewRef, { once: true, margin: "-60px" });
+  const { ref: spotRef, onMouseMove } = useSpotlight();
   const { t } = useI18n();
   const isEven = index % 2 === 0;
 
+  const setRefs = useCallback(
+    (node) => {
+      inViewRef.current = node;
+      spotRef.current = node;
+    },
+    [spotRef]
+  );
+
   return (
     <motion.article
-      ref={ref}
+      ref={setRefs}
+      onMouseMove={onMouseMove}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.05 }}
-      className="group rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden hover:border-[#6C63FF]/30 transition-all duration-300 hover:shadow-[0_0_60px_rgba(108,99,255,0.07)]"
+      className="spotlight group rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden hover:border-[#6C63FF]/30 transition-all duration-300 hover:shadow-[0_0_60px_rgba(108,99,255,0.07)]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Image panel */}
@@ -204,7 +215,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
-          className="font-sora font-bold text-4xl md:text-5xl text-[#F0F0FA] mb-3"
+          className="font-sora font-bold text-fluid-section text-[#F0F0FA] mb-3"
         >
           {t("projects.title1")}{" "}
           <span className="gradient-text">{t("projects.title2")}</span>

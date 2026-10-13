@@ -38,7 +38,7 @@ export default function Resume() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
-          className="font-sora font-bold text-4xl md:text-5xl text-[#F0F0FA] mb-16"
+          className="font-sora font-bold text-fluid-section text-[#F0F0FA] mb-16"
         >
           {t("resume.title")}
         </motion.h2>

@@ -146,7 +146,7 @@ export default function Footer() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 }}
-              className="font-sora font-bold text-4xl md:text-5xl text-[#F0F0FA] leading-tight mb-6"
+              className="font-sora font-bold text-fluid-section text-[#F0F0FA] leading-tight mb-6"
             >
               {t("footer.title1")}{" "}
               <span className="gradient-text">{t("footer.title2")}</span>
