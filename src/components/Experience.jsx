@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Sparkles, Code2, ShieldCheck, MapPin, Calendar } from "lucide-react";
+import { Sparkles, Code2, ShieldCheck, LifeBuoy, MapPin, Calendar } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { useSpotlight } from "@/hooks/useSpotlight";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,13 +18,14 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-const TECH = ["React", "Vite", "Supabase", "Tailwind CSS", "Cloudflare Pages", "Claude Code"];
+const TECH = ["React", "TypeScript", "Vite", "Supabase", "Tailwind CSS", "Cloudflare Pages", "GitHub Actions", "Claude Code"];
 
-const BULLET_ICONS = [Sparkles, Code2, ShieldCheck];
+const BULLET_ICONS = [Code2, Sparkles, ShieldCheck, LifeBuoy];
 
 export default function Experience() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { ref: spotRef, onMouseMove } = useSpotlight();
   const { t } = useI18n();
 
   return (
@@ -54,7 +56,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.1 }}
-          className="font-sora font-bold text-4xl md:text-5xl text-[#F0F0FA] leading-tight mb-3"
+          className="font-sora font-bold text-fluid-section text-[#F0F0FA] leading-tight mb-3"
         >
           {t("experience.title1")}{" "}
           <span className="gradient-text">{t("experience.title2")}</span>
@@ -86,10 +88,12 @@ export default function Experience() {
           </motion.span>
 
           <motion.article
+            ref={spotRef}
+            onMouseMove={onMouseMove}
             variants={stagger}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-9 transition-all duration-300 hover:border-[#6C63FF]/30 hover:shadow-[0_0_60px_rgba(108,99,255,0.08)]"
+            className="spotlight group relative rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 md:p-9 transition-all duration-300 hover:border-[#6C63FF]/30 hover:shadow-[0_0_60px_rgba(108,99,255,0.08)]"
           >
             {/* Top row: role + current badge */}
             <motion.div variants={fadeUp} className="flex items-start justify-between gap-4 flex-wrap mb-2">
@@ -126,7 +130,7 @@ export default function Experience() {
 
             {/* Bullets */}
             <motion.ul variants={stagger} className="space-y-3 mb-7">
-              {["b1", "b2", "b3"].map((key, i) => {
+              {["b1", "b2", "b3", "b4"].map((key, i) => {
                 const Icon = BULLET_ICONS[i];
                 return (
                   <motion.li key={key} variants={fadeUp} className="flex items-start gap-3">
