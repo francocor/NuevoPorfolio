@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Accessibility: respect users who prefer reduced motion */
@@ -44,6 +45,14 @@ html {
     --input: 240 8% 14%;
     --ring: 248 89% 69%;
     --radius: 0.75rem;
+
+    /* Brand accents */
+    --brand-indigo: #6C63FF;
+    --brand-cyan: #00D4FF;
+
+    /* Motion easing tokens */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   * {
@@ -56,19 +65,34 @@ html {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Sora', sans-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Accessible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid var(--brand-indigo);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #6C63FF 0%, #00D4FF 100%);
+    background: linear-gradient(120deg, #6C63FF 0%, #00D4FF 50%, #6C63FF 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease-in-out infinite;
   }
 
   .card-glass {
@@ -85,10 +109,85 @@ html {
     font-weight: 500;
     letter-spacing: 0.05em;
   }
+
+  /* Fluid display type for big headings */
+  .text-fluid-hero {
+    font-size: clamp(2.75rem, 8vw, 6.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+  }
+
+  .text-fluid-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-fluid-section {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  /* Cursor-follow spotlight — pair with the SpotlightCard component.
+     The component writes --mx / --my (0..1) on pointer move. */
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.35s var(--ease-out-soft);
+    background: radial-gradient(
+      420px circle at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%),
+      rgba(108, 99, 255, 0.12),
+      transparent 60%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+  .spotlight > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hairline gradient divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(108, 99, 255, 0.4),
+      transparent
+    );
+  }
+}
+
+/* Fine film-grain overlay for a premium, less-flat finish */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #08080E;
