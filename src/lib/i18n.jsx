@@ -97,7 +97,7 @@ const MESSAGES = {
       multiventas_result: "Plataforma en producción (Vercel) con automatizaciones: expiración de pedidos impagos y resumen diario.",
 
       consulvia_category: "SaaS Multi-tenant · Salud",
-      consulvia_context: "Plataforma de gestión para profesionales de la salud y centros médicos: agenda, pacientes, historia clínica, documentos y facturación en un solo lugar. Reescritura del sistema del Centro Médico Aillu sobre una base multi-tenant segura.",
+      consulvia_context: "Plataforma de gestión para profesionales de la salud y centros médicos: agenda, pacientes, historia clínica, documentos y facturación en un solo lugar, sobre una base multi-tenant segura.",
       consulvia_challenge: "Aislar los datos de cada organización y proteger información de salud desde el diseño: multi-tenant con Row Level Security, doble factor, catálogo de permisos, auditoría append-only y cifrado de campos sensibles.",
       consulvia_role: "Desarrollo del sistema completo en un monorepo pnpm TypeScript: API y worker en Fastify (monolito modular), base PostgreSQL con Drizzle ORM y pg-boss, y una PWA en React 19 + Vite (app del staff, portal del paciente y reserva de turnos pública).",
       consulvia_highlight: "Mobile-first (PWA desde 360 px, es-AR); contratos de datos compartidos con Zod; e integración continua en cada PR: typecheck, lint, tests unitarios/integración/E2E, build de imagen, auditoría de dependencias y escaneo de secretos.",
@@ -250,7 +250,7 @@ const MESSAGES = {
       multiventas_result: "Platform in production (Vercel) with automations: auto-expiry of unpaid orders and a daily summary.",
 
       consulvia_category: "Multi-tenant SaaS · Health",
-      consulvia_context: "Practice management platform for health professionals and medical centers: agenda, patients, clinical records, documents and billing in one place. A rewrite of the Centro Médico Aillu system on a secure multi-tenant foundation.",
+      consulvia_context: "Practice management platform for health professionals and medical centers: agenda, patients, clinical records, documents and billing in one place, on a secure multi-tenant foundation.",
       consulvia_challenge: "Isolate each organization's data and protect health information by design: multi-tenant with Row Level Security, two-factor auth, a permission catalog, an append-only audit trail and encryption of sensitive fields.",
       consulvia_role: "Development of the full system in a pnpm TypeScript monorepo: Fastify API and worker (modular monolith), PostgreSQL with Drizzle ORM and pg-boss, and a React 19 + Vite PWA (staff app, patient portal and public booking).",
       consulvia_highlight: "Mobile-first (PWA from 360 px, es-AR); shared data contracts with Zod; and CI on every PR: typecheck, lint, unit/integration/E2E tests, image build, dependency audit and secret scanning.",
