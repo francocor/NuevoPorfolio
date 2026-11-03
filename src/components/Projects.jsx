@@ -1,55 +1,97 @@
 import { useRef, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { Github } from "lucide-react";
+import { Lock, Store, HeartPulse, ExternalLink, Github } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { useSpotlight } from "@/hooks/useSpotlight";
 
-import Proyecto1MedPc from "@/assets/Proyecto1AppMedi.png";
-import Proyecto1MedCel from "@/assets/Proyecto1AppMediCel.png";
-import Proyecto2Nefro from "@/assets/Proyecto2Nefrog.png";
-import Proyecto2NefroCel from "@/assets/Proyecto2NefrogCel.png";
-import Proyecto3Hosp from "@/assets/Proyecto3Hospi.png";
-import Proyecto3HospCel from "@/assets/Proyecto3HospiCel.png";
+import inmueblesDesktop from "@/assets/projects/inmuebles-desktop.png";
+import multiventasDesktop from "@/assets/projects/multiventas-desktop.png";
 
 const PROJECTS = [
   {
-    key: "harmonia",
-    title: "Harmonia",
-    githubUrl: "https://github.com/francocor/HistoriasClinicas",
-    figmaUrl: "https://www.figma.com/design/ShsV06LZ1EOLp236nMlAg6/Porfolio?node-id=0-1&t=1t5VGvYOpBuIfp17-1",
-    stack: ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
-    desktopImage: Proyecto1MedPc,
-    mobileImage: Proyecto1MedCel,
+    key: "inmuebles",
+    title: "InmueblesPro",
+    stack: ["React", "TypeScript", "Turborepo", "Node.js", "PostgreSQL", "Electron", "Docker"],
+    desktopImage: inmueblesDesktop,
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    key: "hospital",
-    title: "Hospital San Pablo",
-    githubUrl: "https://github.com/Enzogz98/HospSanPablo",
-    figmaUrl: null,
-    stack: ["React", "JavaScript", "Node.js", "MySQL"],
-    desktopImage: Proyecto3Hosp,
-    mobileImage: Proyecto3HospCel,
+    key: "multiventas",
+    title: "Multiventas Tucumán",
+    stack: ["Next.js", "React 19", "TypeScript", "Supabase", "Tailwind CSS", "Playwright", "Vercel"],
+    desktopImage: multiventasDesktop,
+    githubUrl: null,
+    liveUrl: null,
   },
   {
-    key: "nefrogen",
-    title: "Nefrogen",
-    githubUrl: "https://github.com/francocor/Nefrogem",
-    figmaUrl: null,
-    stack: ["React", "Node.js", "MySQL", "Tailwind CSS"],
-    desktopImage: Proyecto2Nefro,
-    mobileImage: Proyecto2NefroCel,
+    key: "consulvia",
+    title: "Consulvia",
+    stack: ["React 19", "TypeScript", "Fastify", "PostgreSQL", "Drizzle", "Vite", "Docker"],
+    cover: "health",
+    githubUrl: null,
+    liveUrl: null,
+  },
+  {
+    key: "mostrador",
+    title: "Mostrador",
+    stack: ["React", "TypeScript", "Fastify", "SQLite", "Vite", "Node.js"],
+    cover: "store",
+    githubUrl: null,
+    liveUrl: null,
   },
 ];
 
-const FigmaIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 28.5C19 25.98 20 23.56 21.78 21.78C23.56 20 25.98 19 28.5 19C31.02 19 33.44 20 35.22 21.78C36.99 23.56 38 25.98 38 28.5C38 31.02 36.99 33.44 35.22 35.22C33.44 36.99 31.02 38 28.5 38C25.98 38 23.56 36.99 21.78 35.22C20 33.44 19 31.02 19 28.5Z" fill="#1ABCFE"/>
-    <path d="M0 47.5C0 44.98 1 42.56 2.78 40.78C4.56 39 6.98 38 9.5 38H19V47.5C19 50.02 17.99 52.44 16.22 54.22C14.44 55.99 12.02 57 9.5 57C6.98 57 4.56 55.99 2.78 54.22C1 52.44 0 50.02 0 47.5Z" fill="#0ACF83"/>
-    <path d="M19 0V19H28.5C31.02 19 33.44 17.99 35.22 16.22C36.99 14.44 38 12.02 38 9.5C38 6.98 36.99 4.56 35.22 2.78C33.44 1 31.02 0 28.5 0H19Z" fill="#FF7262"/>
-    <path d="M0 9.5C0 12.02 1 14.44 2.78 16.22C4.56 17.99 6.98 19 9.5 19H19V0H9.5C6.98 0 4.56 1 2.78 2.78C1 4.56 0 6.98 0 9.5Z" fill="#F24E1E"/>
-    <path d="M0 28.5C0 31.02 1 33.44 2.78 35.22C4.56 36.99 6.98 38 9.5 38H19V19H9.5C6.98 19 4.56 20 2.78 21.78C1 23.56 0 25.98 0 28.5Z" fill="#A259FF"/>
-  </svg>
-);
+const COVER_ICONS = { store: Store, health: HeartPulse };
+
+function PreviewFrame({ project }) {
+  const CoverIcon = project.cover ? COVER_ICONS[project.cover] : null;
+  return (
+    <div className="relative w-full max-w-[460px]">
+      {/* ambient glow */}
+      <div
+        aria-hidden
+        className="absolute -inset-6 rounded-[2rem] opacity-60 blur-3xl"
+        style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(108,99,255,0.25), transparent 70%)" }}
+      />
+      {/* window */}
+      <div className="relative rounded-xl border border-white/10 bg-[#0b0b14] shadow-2xl overflow-hidden group-hover:border-white/20 transition-colors duration-300">
+        {/* top bar */}
+        <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/[0.06] bg-white/[0.02]">
+          <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+          <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+        </div>
+        {/* body */}
+        {project.desktopImage ? (
+          <img
+            src={project.desktopImage}
+            alt={`${project.title} — preview`}
+            loading="lazy"
+            className="w-full h-[240px] md:h-[280px] object-cover object-top group-hover:object-[center_30%] transition-[object-position] duration-[1200ms] ease-out"
+          />
+        ) : (
+          <div className="relative w-full h-[240px] md:h-[280px] flex flex-col items-center justify-center gap-3 overflow-hidden">
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.12]"
+              style={{
+                backgroundImage: "radial-gradient(circle, rgba(108,99,255,0.6) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
+            <div className="relative w-16 h-16 rounded-2xl border border-[#6C63FF]/30 bg-[#6C63FF]/10 flex items-center justify-center">
+              {CoverIcon && <CoverIcon size={30} className="text-[#6C63FF]" />}
+            </div>
+            <span className="relative font-sora font-semibold text-lg text-[#F0F0FA]">
+              {project.title}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function ProjectCard({ project, index }) {
   const inViewRef = useRef(null);
@@ -76,33 +118,13 @@ function ProjectCard({ project, index }) {
       className="spotlight group rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden hover:border-[#6C63FF]/30 transition-all duration-300 hover:shadow-[0_0_60px_rgba(108,99,255,0.07)]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Image panel */}
+        {/* Preview panel */}
         <div
           className={`relative bg-[#0a0a12] flex items-center justify-center p-8 min-h-[300px] overflow-hidden ${
             !isEven ? "lg:order-2" : ""
           }`}
         >
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 50%, rgba(108,99,255,0.4), transparent 70%)",
-            }}
-          />
-          <div className="relative flex items-center justify-center w-full">
-            <img
-              src={project.desktopImage}
-              alt={`${project.title} desktop`}
-              className="relative z-[5] w-full max-w-[380px] rounded-xl shadow-2xl border border-white/10 group-hover:scale-[1.02] transition-transform duration-500"
-            />
-            {project.mobileImage && (
-              <img
-                src={project.mobileImage}
-                alt={`${project.title} mobile`}
-                className="absolute -bottom-4 -right-2 w-16 md:w-[72px] rounded-xl shadow-2xl z-10 border border-white/10"
-              />
-            )}
-          </div>
+          <PreviewFrame project={project} />
         </div>
 
         {/* Content panel */}
@@ -118,23 +140,37 @@ function ProjectCard({ project, index }) {
                 {t(`projects.${project.key}_category`)}
               </span>
               <div className="flex items-center gap-2">
-                {project.figmaUrl && (
-                  <span
-                    className="p-2 rounded-lg border border-white/[0.08] opacity-60"
-                    title="Documentado en Figma"
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg border border-white/[0.08] hover:bg-white/[0.06] transition-colors"
+                    title={t("projects.view_live")}
                   >
-                    <FigmaIcon />
+                    <ExternalLink size={15} className="text-[#8888A8]" />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg border border-white/[0.08] hover:bg-white/[0.06] transition-colors"
+                    title={t("projects.view_code")}
+                  >
+                    <Github size={15} className="text-[#8888A8]" />
+                  </a>
+                )}
+                {!project.liveUrl && !project.githubUrl && (
+                  <span
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/[0.08] text-[10px] font-mono text-[#8888A8]"
+                    title={t("projects.private_hint")}
+                  >
+                    <Lock size={11} />
+                    {t("projects.private")}
                   </span>
                 )}
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/[0.08] hover:bg-white/[0.06] transition-colors"
-                  title={t("projects.view_code")}
-                >
-                  <Github size={15} className="text-[#8888A8]" />
-                </a>
               </div>
             </div>
 
@@ -156,13 +192,13 @@ function ProjectCard({ project, index }) {
                 </div>
               ))}
 
-              {/* UX/UI highlight */}
+              {/* Highlight */}
               <div className="p-4 rounded-xl border border-[#6C63FF]/20 bg-[#6C63FF]/[0.04]">
                 <p className="text-[#6C63FF] text-xs font-mono mb-1">
-                  {t("projects.ux_label")}
+                  {t("projects.highlight_label")}
                 </p>
                 <p className="text-[#A0A0C0] text-sm font-sans leading-relaxed">
-                  {t(`projects.${project.key}_ux`)}
+                  {t(`projects.${project.key}_highlight`)}
                 </p>
               </div>
 
